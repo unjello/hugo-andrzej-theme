@@ -7,6 +7,9 @@
   <title>{{ .Title }}</title>
   <link rel="stylesheet" type="text/css" href="/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" href="/css/rainbow.min.css">
+  <script src="/js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </head>
 <body>
   <div class="container">
@@ -20,7 +23,23 @@
         </ul>
     {{ end }}
   </div>
-  {{ partial "main.html" . }}
+
+  <div class="container">
+    {{ $pages := sort (where .Site.RegularPages "Type" "in" "posts") ".Params.date" "desc" }}
+    {{ range $pages }}
+    <article class="list-item">
+      <h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+      <time>{{ dateFormat "Mon, 02 Jan 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
+      <div class="description">
+        {{ .Summary }}
+      </div>
+      {{ if .Truncated }}
+      <a href="{{ .Permalink }}" class="more">read more...</a>
+      {{ end }}
+    </article>
+    {{ end }}  
+  </div>
+  
   <div class="container footer">CC0. Powered by <a href="https://gohugo.io/">Hugo</a>. Theme inspired by <a href="https://www.mattdesl.com/">@mattdesl</a> and <a href="https://ozafoto.com/digital/">Oza</a>.</div>
 </body>
 </html>
