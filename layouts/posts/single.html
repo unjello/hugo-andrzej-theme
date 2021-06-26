@@ -1,28 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <title>{{ .Title }}</title>
-  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <link rel="stylesheet" href="/css/rainbow.min.css">
-  <script src="/js/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-</head>
+{{ partial "head.html" . }}
 <body>
-  <div class="container">
-    {{ with .Site.Params.header }}<header class="name"><a href="/" class="name">{{ . }}</a></header>{{ end }}
-    {{ with .Site.Params.tagline }}<p>{{ . }}</p>{{ end }}
-    {{ with .Site.Params.social }}
-        <ul class="social">
-        {{ range  . }}
-        <li><a href="{{ .url }}">{{ .name }}</a></li>
-        {{ end }}
-        </ul>
-    {{ end }}
-  </div>
+  {{ partial "header.html" . }}
 
   <div class="container back">
     <a href="/posts" class="more">↫</a>

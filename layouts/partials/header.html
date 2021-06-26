@@ -1,0 +1,20 @@
+<div class="container">
+    {{ with .Site.Params.header }}<header class="name"><a href="/" class="name">{{ . }}</a><ul class="language-chooser">
+    {{ range $.Translations }}
+    <li><a href="{{ .Permalink }}" class="image"><img src="/images/{{ .Language }}.svg" alt="{{ .Language.LanguageName }}"></a></li>
+    {{ end }}
+    </ul></header>{{ end }}
+    {{ with .Site.Params.tagline }}<p>{{ . }}</p>{{ end }}
+    {{ with .Site.Params.social }}
+        <ul class="social">
+        {{ range  . }}
+        <li><a href="{{ .url }}">{{ .name }}</a></li>
+        {{ end }}
+        </ul>
+    {{ end }}
+</div>
+
+
+
+                
+                
